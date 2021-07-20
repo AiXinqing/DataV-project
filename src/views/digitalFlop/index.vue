@@ -1,220 +1,78 @@
 <template>
-  <div id="digital-flop">
-    <div
-      class="digital-flop-item"
-      v-for="item in digitalFlopData"
-      :key="item.title"
-    >
-      <div class="digital-flop-title">{{ item.title }}</div>
-      <div class="digital-flop">
-        <dv-digital-flop
-          :config="item.number"
-          style="width:100px;height:50px;"
-        />
-          <div class="unit">{{ item.unit }}</div>
+  <div class="dataV_content">
+    <dv-full-screen-container >
+      <div class="top-header">
+        <dv-decoration-8 class="header-left-decoration" />
+        <dv-decoration-5 class="header-center-decoration" />
+        <dv-decoration-8 :reverse="true" class="header-right-decoration"  />
+        <div class="center-title">综合数据展示</div>
       </div>
-    </div>
-
-    <dv-decoration-10 />
+      <digitalFlop />
+    </dv-full-screen-container>
   </div>
 </template>
 
 <script>
+import digitalFlop from './flopItem'
 export default {
-  name: 'DigitalFlop',
-  data () {
-    return {
-      digitalFlopData: []
-    }
-  },
-  methods: {
-    createData () {
-      const { randomExtend } = this
-
-      this.digitalFlopData = [
-        {
-          title: '管养里程',
-          number: {
-            number: [randomExtend(20000, 30000)],
-            content: '{nt}',
-            textAlign: 'right',
-            style: {
-              fill: '#4d99fc',
-              fontWeight: 'bold'
-            }
-          },
-          unit: '公里'
-        },
-        {
-          title: '桥梁',
-          number: {
-            number: [randomExtend(20, 30)],
-            content: '{nt}',
-            textAlign: 'right',
-            style: {
-              fill: '#f46827',
-              fontWeight: 'bold'
-            }
-          },
-          unit: '座'
-        },
-        {
-          title: '涵洞隧道',
-          number: {
-            number: [randomExtend(20, 30)],
-            content: '{nt}',
-            textAlign: 'right',
-            style: {
-              fill: '#40faee',
-              fontWeight: 'bold'
-            }
-          },
-          unit: '个'
-        },
-        {
-          title: '匝道',
-          number: {
-            number: [randomExtend(10, 20)],
-            content: '{nt}',
-            textAlign: 'right',
-            style: {
-              fill: '#4d99fc',
-              fontWeight: 'bold'
-            }
-          },
-          unit: '个'
-        },
-        {
-          title: '隧道',
-          number: {
-            number: [randomExtend(5, 10)],
-            content: '{nt}',
-            textAlign: 'right',
-            style: {
-              fill: '#f46827',
-              fontWeight: 'bold'
-            }
-          },
-          unit: '个'
-        },
-        {
-          title: '服务区',
-          number: {
-            number: [randomExtend(5, 10)],
-            content: '{nt}',
-            textAlign: 'right',
-            style: {
-              fill: '#40faee',
-              fontWeight: 'bold'
-            }
-          },
-          unit: '个'
-        },
-        {
-          title: '收费站',
-          number: {
-            number: [randomExtend(5, 10)],
-            content: '{nt}',
-            textAlign: 'right',
-            style: {
-              fill: '#4d99fc',
-              fontWeight: 'bold'
-            }
-          },
-          unit: '个'
-        },
-        {
-          title: '超限站',
-          number: {
-            number: [randomExtend(5, 10)],
-            content: '{nt}',
-            textAlign: 'right',
-            style: {
-              fill: '#f46827',
-              fontWeight: 'bold'
-            }
-          },
-          unit: '个'
-        },
-        {
-          title: '停车区',
-          number: {
-            number: [randomExtend(5, 10)],
-            content: '{nt}',
-            textAlign: 'right',
-            style: {
-              fill: '#40faee',
-              fontWeight: 'bold'
-            }
-          },
-          unit: '个'
-        }
-      ]
-    },
-    randomExtend (minNum, maxNum) {
-      if (arguments.length === 1) {
-        return parseInt(Math.random() * minNum + 1, 10)
-      } else {
-        return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10)
-      }
-    }
-  },
-  mounted () {
-    const { createData } = this
-
-    createData()
-
-    setInterval(createData, 5000)
+  components: {
+    digitalFlop
   }
 }
 </script>
 
 <style lang="less">
-#digital-flop {
-  position: relative;
-  height: 15%;
-  flex-shrink: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgba(6, 30, 93, 0.5);
+  .img_top{
+    position: relative;
+    top: 30%;
+    width: 20%;
 
-  .dv-decoration-10 {
-    position: absolute;
-    width: 95%;
-    left: 2.5%;
-    height: 5px;
-    bottom: 0px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
   }
-
-  .digital-flop-item {
-    width: 11%;
-    height: 80%;
+  .dataV_content{
+    background-color: #030409;
+    margin: 0 0;
+    padding: 0 0;
+    width: 100%;
+    height:100%;
+  }
+  .top-header{
+    position: relative;
+    width: 100%;
+    height: 100px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-left: 3px solid rgb(6, 30, 93);
-    border-right: 3px solid rgb(6, 30, 93);
-  }
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
 
-  .digital-flop-title {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #fff;
-  }
+    .header-left-decoration,
+    .header-right-decoration{
+      width: 25%;
+      height: 45px;
+    }
 
-  .digital-flop {
-    display: flex;
-  }
+    .header-center-decoration {
+      width: 40%;
+      height: 45px;
+      margin-top: 30px;
+    }
 
-  .unit {
-    margin-left: 10px;
-    display: flex;
-    align-items: flex-end;
-    box-sizing: border-box;
-    padding-bottom: 13px;
-    color: #fff;
+    .center-title {
+      position: absolute;
+      font-size: 24px;
+      font-weight: 700;
+      left: 50%;
+      top: 15px;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+      color: #fff;
+    }
   }
-}
 </style>
