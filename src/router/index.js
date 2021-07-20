@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Info from '../views/digitalFlop/'
+import Platform from '../views/'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Info',
-    component: Info
+    name: 'Platform',
+    component: Platform
   },
   {
     path: '/about',
@@ -19,6 +19,11 @@ const routes = [
     path: '/Home',
     name: 'Home',
     component: () => import('../views/test/Home.vue')
+  },
+  {
+    path: '/Info',
+    name: 'Info',
+    component: () => import('../views/digitalFlop/')
   }
 ]
 
