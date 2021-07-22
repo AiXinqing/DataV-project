@@ -6,10 +6,11 @@ import store from './store'
 import dataV from '@jiaminghi/data-view'
 // import Charts from '@jiaminghi/charts'
 import Components from './components/index'
+// import { formatDate } from '@/assets/js/_formatDate'
 import 'lib-flexible'
 // main.js中
 // import './utils/flexible'
-
+// Vue.prototype.formatDate = formatDate
 Vue.config.productionTip = false
 Vue.use(dataV)
 // Vue.use(Charts)
