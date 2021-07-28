@@ -3,7 +3,7 @@
     <div class="scree_left">
       <div v-html="timeDisplayArea" class="now_data" />
 
-      <dv-decoration-2 class="time_box"></dv-decoration-2>
+      <!-- <dv-decoration-2 class="time_box"></dv-decoration-2> -->
     </div>
     <div class="scree_center">测试大数据中心</div>
     <div class="scree_right">
